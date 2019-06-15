@@ -1,0 +1,47 @@
+<div class="app-container">
+    <div class="content">
+      <div class="filters">
+        <div class="filter-type">
+            <span>Hotel name</span>
+            <input type="text" maxlength="1">
+        </div>
+        <div class="filter-type">
+            <span>Price</span>
+            <select>
+              <option>Recommended</option>
+              <option>Price low-to-high</option>
+              <option>Price high-to-low</option>
+            </select>
+        </div>
+        <div class="filter-type">
+          <div class="btn reset">Reset</div>
+        </div>
+      </div>
+      <div>
+        <div ng-repeat="hotel in landingCtrl.hotels">
+          <div class="hotel-list">
+            <img ng-src="{{ hotel.hotelStaticContent.mainImage.url }}" class="photo"/>
+            <div class="details">
+              <div>
+                  {{ hotel.hotelStaticContent.name }}
+              </div>
+              <div class="sub-text">
+                  {{ hotel.hotelStaticContent.neighborhoodName }}
+              </div>
+            </div>
+            <div class="price">
+                <div class="rewards">
+                    {{ hotel.rewards.miles | number }}
+                    <span class="sub-text">miles</span>
+                </div>
+                <div class="cost">
+                    {{ hotel.lowestAveragePrice.amount | currency:undefined:0 }}
+                    <div class="sub-text">per night</div>
+                </div>
+                <div class="btn">Select</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
