@@ -1,14 +1,10 @@
-import angular from 'angular';
+import angular from "angular";
 
-angular.module('app', [
-    'ui.router',
-    'landing'
-])
-.config(configure);
+angular.module("app", ["ui.router", "landing"]).config(configure);
 
-function configure($locationProvider,) {
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
-    });
+function configure($locationProvider) {
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
 }
