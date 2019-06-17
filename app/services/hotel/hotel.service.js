@@ -11,14 +11,6 @@ class HotelService {
         })
         .catch(angular.noop());
     };
-    this.getJson = function() {
-      return $http
-        .get("../test-payload.json")
-        .then(function(response) {
-          return response.data;
-        })
-        .catch(angular.noop());
-    };
   }
 }
 
