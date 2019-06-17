@@ -1,15 +1,17 @@
-import angular from 'angular';
+import angular from "angular";
 
-function HotelService($http) {
-    'ngInject';
-
+class HotelService {
+  constructor($http) {
+    "ngInject";
     this.get = function() {
-        return $http.get('https://homework-app.rocketmiles.com/fe-homework/rates ')
-            .then(function(response) {
-                return response.data;
-            })
-            .catch(angular.noop())
-    }
+      return $http
+        .get("https://homework-app.rocketmiles.com/fe-homework/rates")
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(angular.noop());
+    };
+  }
 }
 
 export { HotelService };

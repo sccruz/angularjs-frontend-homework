@@ -3,23 +3,25 @@
       <div class="filters">
         <div class="filter-type">
             <span>Hotel name</span>
-            <input type="text" maxlength="1">
+            <input
+              type="text"
+              ng-model="landingCtrl.nameQuery"
+              ng-change="landingCtrl.filterHotels()">
         </div>
         <div class="filter-type">
             <span>Price</span>
-            <select>
-              <option>Recommended</option>
-              <option>Price low-to-high</option>
-              <option>Price high-to-low</option>
+            <select
+              ng-model="landingCtrl.activeSort"
+              ng-options="option.label for option in landingCtrl.sortOptions track by option.id">
             </select>
         </div>
         <div class="filter-type">
-          <div class="btn reset">Reset</div>
+          <div class="btn reset" ng-click="landingCtrl.reset()">Reset</div>
         </div>
       </div>
       <div>
-        <div ng-repeat="hotel in landingCtrl.hotels">
-          <div class="hotel-list">
+        <div ng-repeat="hotel in (landingCtrl.filteredHotels = (landingCtrl.hotels | orderBy:landingCtrl.hotelSort | filter:landingCtrl.filterHotels))">
+          <div class="hotel-list" ng-if="landingCtrl.filteredHotels.length >= 1 && !landingCtrl.responseError">
             <img ng-src="{{ hotel.hotelStaticContent.mainImage.url }}" class="photo"/>
             <div class="details">
               <div>
@@ -41,6 +43,12 @@
                 <div class="btn">Select</div>
             </div>
           </div>
+        </div>
+        <div class="hotel-list" ng-if="landingCtrl.filteredHotels.length === 0 && landingCtrl.nameQuery && landingCtrl.nameQuery.trim() !== '' && !landingCtrl.responseError">
+            Your search for "{{landingCtrl.nameQuery}}" did not match any hotels.
+        </div>
+        <div class="hotel-list" ng-if="landingCtrl.responseError">
+            We were unable to process your request at this time. Please try again later.
         </div>
       </div>
     </div>
