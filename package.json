@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
-    "angular": "^1.7.8",
+    "angular": "^1.7.9",
     "angular-mocks": "^1.7.8",
     "angular-ui-router": "^1.0.22",
     "babel": "^6.23.0",
